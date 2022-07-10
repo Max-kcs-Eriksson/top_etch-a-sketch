@@ -44,6 +44,7 @@ main {
 
 /* DRAWING PAD */
 .drawing-pad {
+    cursor: pointer;
     display: flex;
     flex-wrap: wrap;
     background-color: rgb(215, 235, 255);
