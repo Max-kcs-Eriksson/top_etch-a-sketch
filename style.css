@@ -14,19 +14,6 @@
 
 
 /*****************************************
-***************** PAINT ******************
-*****************************************/
-
-.draw-box {
-    border: 2px solid red; /* FOR TESTING ONLY */
-    background-color: rgb(215, 235, 255);
-}
-
-.painted {
-    background-color: rgb(0, 0, 0);
-}
-
-/*****************************************
 ***************** <main> *****************
 *****************************************/
 
@@ -57,7 +44,24 @@ main {
 
 /* DRAWING PAD */
 .drawing-pad {
+    display: flex;
+    flex-wrap: wrap;
     background-color: rgb(215, 235, 255);
     width: 800px;
     height: 800px;
+}
+
+
+/*****************************************
+***************** PAINT ******************
+*****************************************/
+
+.draw-box {
+    box-sizing: border-box;
+    border: 2px solid red; /* FOR TESTING ONLY */
+    background-color: rgb(215, 235, 255);
+}
+
+.painted {
+    background-color: rgb(0, 0, 0);
 }
