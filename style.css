@@ -12,6 +12,10 @@
     padding: 0;
 }
 
+.btn {
+    cursor: pointer;
+}
+
 
 /*****************************************
 ***************** <main> *****************
@@ -44,7 +48,6 @@ main {
 
 /* DRAWING PAD */
 .drawing-pad {
-    cursor: pointer;
     display: flex;
     flex-wrap: wrap;
     background-color: rgb(215, 235, 255);
@@ -60,6 +63,7 @@ main {
 .draw-box {
     box-sizing: border-box;
     border: 2px solid red; /* FOR TESTING ONLY */
+    cursor: pointer;
     background-color: rgb(215, 235, 255);
 }
 
