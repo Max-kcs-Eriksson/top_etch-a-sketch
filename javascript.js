@@ -11,7 +11,7 @@ const setAxisSlider = document.querySelector('#set-x-y');
 const axisSliderValue = document.querySelector('#display-x-y');
 // Displays value on range input
 setAxisSlider.oninput = () => {
-    axisSliderValue.textContent = setAxisSlider.value;
+    axisSliderValue.textContent = `${setAxisSlider.value}x${setAxisSlider.value}`;
 }
 /* Confirms axisSliderValue and created grid of drawBox with set X-& Y-axis */
 const setAxisButton = document.querySelector('#confirm-x-y');
@@ -24,7 +24,7 @@ setAxisButton.addEventListener('click', () => {
     // const oldDrawBoxes = document.querySelectorAll('.draw-box');
     // const oldDrawBox = document.querySelector('.draw-box');
 
-        
+    // If no oldDrawBox exist, run below code:
     if (!oldDrawBox) {
         const xAxis = setAxisSlider.value;
         const yAxis = xAxis;
@@ -36,6 +36,7 @@ setAxisButton.addEventListener('click', () => {
         for (let i = 0; i < drawBoxTotal; i++) {
             const drawBox = document.createElement('div');
             drawBox.classList.add('draw-box');
+            drawBox.setAttribute('draggable', 'false');
             drawPad.appendChild(drawBox);
         };
 
@@ -46,14 +47,44 @@ setAxisButton.addEventListener('click', () => {
             console.log('Box Width: ' + drawBoxWidth + 'px');
 
         const drawBoxes = document.querySelectorAll('.draw-box');
+
+        function addMouseMove() {
+            drawBoxes.forEach((div => {
+                /* Set style property: width & height */
+                div.style.width = `${drawBoxWidth}px`;
+                div.style.height = `${drawBoxWidth}px`;
+                /* Add mouseenter event listener for each box */
+                div.addEventListener('mousemove', paintBox);
+            }));
+        }
+        
+        function removeMouseMove() {
+            drawBoxes.forEach((div => {
+                /* Set style property: width & height */
+                div.style.width = `${drawBoxWidth}px`;
+                div.style.height = `${drawBoxWidth}px`;
+                /* Add mouseenter event listener for each box */
+                div.removeEventListener('mousemove', paintBox);
+            }));
+        }
+        // drawBoxes.forEach((div => {
+        //     /* Set style property: width & height */
+        //     div.style.width = `${drawBoxWidth}px`;
+        //     div.style.height = `${drawBoxWidth}px`;
+        //     /* Add mouseenter event listener for each box */
+        //     div.addEventListener('mousemove', paintBox);
+        // }));
         drawBoxes.forEach((div => {
             /* Set style property: width & height */
             div.style.width = `${drawBoxWidth}px`;
             div.style.height = `${drawBoxWidth}px`;
             /* Add mouseenter event listener for each box */
-            div.addEventListener('mouseenter', paintBox);
+            div.addEventListener('mousedown', addMouseMove);
+            div.addEventListener('mouseup', removeMouseMove);
         }));
+    // If oldDrawBox do exist, run below code:
     } else {
+        // Remove last child of drawPad for oldDrawBoxes.length number of times
         for (let i = 0; i < oldDrawBoxes.length; i++) {
             drawPad.removeChild(drawPad.lastChild);
         }
@@ -69,6 +100,7 @@ setAxisButton.addEventListener('click', () => {
         for (let i = 0; i < drawBoxTotal; i++) {
             const drawBox = document.createElement('div');
             drawBox.classList.add('draw-box');
+            drawBox.setAttribute('draggable', 'false');
             drawPad.appendChild(drawBox);
         };
 
@@ -79,12 +111,40 @@ setAxisButton.addEventListener('click', () => {
             console.log('Box Width: ' + drawBoxWidth + 'px');
 
         const drawBoxes = document.querySelectorAll('.draw-box');
+
+        function addMouseMove() {
+            drawBoxes.forEach((div => {
+                /* Set style property: width & height */
+                div.style.width = `${drawBoxWidth}px`;
+                div.style.height = `${drawBoxWidth}px`;
+                /* Add mouseenter event listener for each box */
+                div.addEventListener('mousemove', paintBox);
+            }));
+        }
+        
+        function removeMouseMove() {
+            drawBoxes.forEach((div => {
+                /* Set style property: width & height */
+                div.style.width = `${drawBoxWidth}px`;
+                div.style.height = `${drawBoxWidth}px`;
+                /* Add mouseenter event listener for each box */
+                div.removeEventListener('mousemove', paintBox);
+            }));
+        }
+        // drawBoxes.forEach((div => {
+        //     /* Set style property: width & height */
+        //     div.style.width = `${drawBoxWidth}px`;
+        //     div.style.height = `${drawBoxWidth}px`;
+        //     /* Add mouseenter event listener for each box */
+        //     div.addEventListener('mousemove', paintBox);
+        // }));
         drawBoxes.forEach((div => {
             /* Set style property: width & height */
             div.style.width = `${drawBoxWidth}px`;
             div.style.height = `${drawBoxWidth}px`;
             /* Add mouseenter event listener for each box */
-            div.addEventListener('mouseenter', paintBox);
+            div.addEventListener('mousedown', addMouseMove);
+            div.addEventListener('mouseup', removeMouseMove);
         }));
 
     }
