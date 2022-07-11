@@ -1,5 +1,5 @@
 /* For testing only */
-* { border: 1px solid rebeccapurple; }
+/* * { border: 1px solid rebeccapurple; } */
 
 /* GENERAL */
 * {
@@ -14,6 +14,7 @@
 
 .btn {
     cursor: pointer;
+    border: none;
 }
 
 
@@ -51,8 +52,8 @@ main {
     display: flex;
     flex-wrap: wrap;
     background-color: rgb(215, 235, 255);
-    width: 800px;
-    height: 800px;
+    /* width: 800px;
+    height: 800px; */
 }
 
 
@@ -62,7 +63,6 @@ main {
 
 .draw-box {
     box-sizing: border-box;
-    border: 2px solid red; /* FOR TESTING ONLY */
     cursor: pointer;
     background-color: rgb(215, 235, 255);
 }
