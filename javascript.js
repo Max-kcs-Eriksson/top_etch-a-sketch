@@ -1,13 +1,16 @@
-const DRAW_PAD_WIDTH_PX = 800; // Height = Width
 const drawPad = document.querySelector('.drawing-pad');
+const drawPadWidthPX = drawPad.style.getPropertyValue('width'); // Height = Width
+const drawPadWidthNum = drawPadWidthPX.slice(0, -2); // Slice last two chars ('px')
+console.log('drawPadWidthPX: ' + drawPadWidthPX);
+console.log('drawPadWidthNum: ' + drawPadWidthNum);
 
 
 /* User press 'SET X&Y' */
 const setAxisButton = document.querySelector('#set-x-y');
 setAxisButton.addEventListener('click', () => {
     /* Prompt to set number of boxes on X & Y axis */
-    let xAxis = Number(prompt('Enter desired number of boxes for X& Y axis', ));
-    let yAxis = xAxis;
+    const xAxis = Number(prompt('Enter desired number of boxes for X& Y axis', ));
+    const yAxis = xAxis;
     
     const drawBoxTotal = xAxis * yAxis;
         console.log('Total num boxes ' + drawBoxTotal);
@@ -20,7 +23,7 @@ setAxisButton.addEventListener('click', () => {
     };
 
     /* Box width and height are calculated based on '.drawing-pad' size and number of boxes */
-    const drawBoxWidth = DRAW_PAD_WIDTH_PX / xAxis;
+    const drawBoxWidth = drawPadWidthNum / xAxis;
         console.log('X Axis num of Boxes: ' + xAxis);
         console.log('Y Axis num of Boxes: ' + yAxis);
         console.log('Box Width: ' + drawBoxWidth);
