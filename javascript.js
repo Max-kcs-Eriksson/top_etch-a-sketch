@@ -5,11 +5,17 @@ console.log('drawPadWidthPX: ' + drawPadWidthPX);
 console.log('drawPadWidthNum: ' + drawPadWidthNum);
 
 
-/* User press 'SET X&Y' */
-const setAxisButton = document.querySelector('#set-x-y');
+/* User selects X-& Y-axis */
+const setAxisSlider = document.querySelector('#set-x-y');
+const axisSliderValue = document.querySelector('#display-x-y');
+
+setAxisSlider.oninput = () => {
+    axisSliderValue.textContent = setAxisSlider.value;
+}
+/* Confirms axisSliderValue and created grid of drawBox with set X-& Y-axis */
+const setAxisButton = document.querySelector('#confirm-x-y');
 setAxisButton.addEventListener('click', () => {
-    /* Prompt to set number of boxes on X & Y axis */
-    const xAxis = Number(prompt('Enter desired number of boxes for X& Y axis', ));
+    const xAxis = setAxisSlider.value;
     const yAxis = xAxis;
     
     const drawBoxTotal = xAxis * yAxis;
