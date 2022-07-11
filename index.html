@@ -17,7 +17,10 @@
             <div class="cont">
                 <div class="ctrl-panel">
                     <button id="erase-drawing" class="btn">Erase</button>
-                    <button id="set-x-y" class="btn">Set X&Y</button>
+                    <div class="slider-cont">
+                        <p>Set X&Y</p>
+                        <input type="range" min="2" max="64" value="31" id="set-x-y" class="slider">
+                    </div>
                 </div>
                 <div class="drawing-pad" style="width: 800px; height: 800px;">
                     <!-- DOM manipulation adds grid of divs -->
