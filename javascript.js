@@ -9,6 +9,7 @@ console.log('drawPadWidthNum: ' + drawPadWidthNum);
 /* User selects X-& Y-axis */
 const setAxisSlider = document.querySelector('#set-x-y');
 const axisSliderValue = document.querySelector('#display-x-y');
+
 // Displays value on range input
 setAxisSlider.oninput = () => {
     axisSliderValue.textContent = `${setAxisSlider.value}x${setAxisSlider.value}`;
@@ -36,7 +37,6 @@ setAxisButton.addEventListener('click', () => {
         for (let i = 0; i < drawBoxTotal; i++) {
             const drawBox = document.createElement('div');
             drawBox.classList.add('draw-box');
-            drawBox.setAttribute('draggable', 'false');
             drawPad.appendChild(drawBox);
         };
 
@@ -80,6 +80,7 @@ setAxisButton.addEventListener('click', () => {
             div.style.height = `${drawBoxWidth}px`;
             /* Add mouseenter event listener for each box */
             div.addEventListener('mousedown', addMouseMove);
+            div.addEventListener('mousedown', paintBox);
             div.addEventListener('mouseup', removeMouseMove);
         }));
     // If oldDrawBox do exist, run below code:
@@ -100,7 +101,6 @@ setAxisButton.addEventListener('click', () => {
         for (let i = 0; i < drawBoxTotal; i++) {
             const drawBox = document.createElement('div');
             drawBox.classList.add('draw-box');
-            drawBox.setAttribute('draggable', 'false');
             drawPad.appendChild(drawBox);
         };
 
@@ -144,6 +144,7 @@ setAxisButton.addEventListener('click', () => {
             div.style.height = `${drawBoxWidth}px`;
             /* Add mouseenter event listener for each box */
             div.addEventListener('mousedown', addMouseMove);
+            div.addEventListener('mousedown', paintBox);
             div.addEventListener('mouseup', removeMouseMove);
         }));
 
