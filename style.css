@@ -1,23 +1,51 @@
 /* For testing only */
-* { border: 1px solid rebeccapurple; }
+/* * { border: 1px solid rebeccapurple; } */
 
-/* GENERAL */
+/*****************************************
+***************** GENERAL ****************
+***************** & FONTS ****************
+*****************************************/
+
 * {
     cursor: default;
-    /* TODO
-    Change color scheme */
-    background-color: rgb(10, 15, 25);
-    color: rgb(215, 235, 255);
     /* Cancel default property values */
     margin: 0;
     padding: 0;
+    font-family: sans-serif;
+}
+
+html {
+    background: rgb(10, 15, 25);
+    color: rgb(215, 235, 255);
 }
 
 .btn {
     cursor: pointer;
-    border: none;
+    font-family: 'zector';
+    font-weight: 900;
+    border: 2px solid rgb(175, 195, 215);
+    box-shadow: -2.25px 1.75px 0 rgba(0, 0, 0, .07);
 }
 
+@font-face {
+    font-family: 'dat-cub--light';
+    src: url(./font_GGBotNet/font_DatCub/DatCub-Light.woff);
+}
+
+@font-face {
+    font-family: 'dat-cub--regular';
+    src: url(./font_GGBotNet/font_DatCub/DatCub-Regular.woff);
+}
+
+@font-face {
+    font-family: 'blaec--italic';
+    src: url(./font_GGBotNet/font_Blaec/Blaec-Italic.woff);
+}
+
+@font-face {
+    font-family: 'zector';
+    src: url(./font_GGBotNet/font_Zector/Zector.otf);
+}   
 
 /*****************************************
 ***************** <main> *****************
@@ -27,12 +55,15 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: rgb(235, 65, 35);
     gap: 1em;
-}
-
-.cont {
-    display: flex;
-
+    max-width: fit-content;
+    border-radius: 24px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 1),
+                inset 0 0 20px rgba(0, 0, 0, .75),
+                inset 0 0 40px rgba(0, 0, 0, .5);
+    padding: 1em 4.5em 4.5em 1em;
+    margin: 2em;
 }
 
 /* TOP BAR */
@@ -40,24 +71,41 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1em;
-    padding: 0em 1em;
+    margin: 1em 1em 0 1em;
+}
+
+h1 {
+    font-family: 'blaec--italic';
+    font-size: 2rem;
+    background: rgb(255, 255, 75);
+    color: rebeccapurple;
+    border: 1px solid rgba(25, 15, 10, .7);
+    border-radius: 16px;
+    padding: .5em 1em;
 }
 
 /* CTRL PANEL */
+.cont {
+    display: flex;
+    gap: .5em;
+}
 
 .ctrl-panel {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin: .5em;
+    background: rgb(235, 65, 35);
+    margin: 3em 0 3em 0;
+    border: 5px solid rgb(255, 255, 75);;
+    border-radius: 8px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, .5);
     padding: .5em;
     gap: 1em;
 }
 
 .ctrl-panel .btn {
-    background-color: rgb(215, 235, 255);
+    background: rgb(215, 235, 255);
     color: rgb(10, 15, 25);
     width: 75px;
     height: 75px;
@@ -66,59 +114,81 @@ main {
 }
 
 /* Draw Style Cont */
-
 .draw-style-cont {
     display: flex;
     flex-direction: column;
+    background: rgb(255, 255, 75);
+    border: 1px solid rgba(25, 15, 10, .7);
+    border-radius: 8px;
+    box-shadow: -1.25px 1px 5px rgba(0, 0, 0, .15);
+    padding: .5em;
     gap: 2em;
 }
 
 .draw-style-cont .btn {
     width: 8em;
     height: auto;
-    border-radius: 4px 8px 8px;
+    border: 1px solid rgb(175, 195, 215);
+    border-radius: 1px 8px 8px;
 }
 
 /* Slider Cont */
-
 .slider-cont {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: rgb(235, 65, 35);
+    color: rgb(10, 15, 25);
     gap: .5em;
 }
 
 .display-cont {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
+    justify-content: space-evenly;
+    background: rgb(215, 235, 255);
+    width: 90%;
+    padding: 5px;
+    border: 1px solid rgba(25, 15, 10, .5);
+    border-radius: 20px;
+    box-shadow: inset -1.25px .75px 0 rgba(0, 0, 0, .25);
+}
+
+.display-cont p {
+    font-family: 'dat-cub--regular';
+    font-size: 1rem;
 }
 
 .slider {
     -webkit-appearance: none;
     appearance: none;
-    background-color: rgb(215, 235, 255);
+    background: rgb(255, 255, 75);
     height: 10px;
+    border: 1px solid rgba(25, 15, 10, .5);
     border-radius: 20px;
+    box-shadow: inset -1.25px .75px 0 rgba(0, 0, 0, .5);
 }
 
 .slider::-webkit-slider-thumb {
     cursor: pointer;
     -webkit-appearance: none;
     appearance: none;
-    background-color: rgb(255, 125, 0);
+    background: rebeccapurple;
     width: 15px;
     height: 15px;
+    border: 3px solid rgba(25, 15, 10, .15);
     border-radius: 50%;
+    box-shadow: inset -1.25px .75px 0 rgba(255, 255, 255, .25);
 }
 
 .slider::-moz-range-thumb {
     cursor: pointer;
-    background-color: rgb(255, 125, 0);
+    background: rebeccapurple;
     width: 15px;
     height: 15px;
+    border: 3px solid rgba(25, 15, 10, .15);
     border-radius: 50%;
+    box-shadow: inset -1.25px .75px 0 rgba(255, 255, 255, .25);
 }
 
 /* DRAWING PAD */
@@ -126,7 +196,10 @@ main {
     display: flex;
     flex: 0 0 auto;
     flex-wrap: wrap;
-    background-color: rgb(215, 235, 255);
+    background: rgb(215, 235, 255);
+    border: 1px solid rgba(25, 15, 10, .7);
+    border-radius: 8px;
+    box-shadow: inset -1.25px .75px 0 rgba(0, 0, 0, .25);
 }
 
 
@@ -137,9 +210,10 @@ main {
 .draw-box {
     box-sizing: border-box;
     cursor: pointer;
-    background-color: rgb(215, 235, 255);
+    background: rgb(215, 235, 255);
+    border: 1px solid rgba(25, 15, 10, .075);
 }
 
 .painted {
-    background-color: rgb(0, 0, 0);
+    background: rgb(0, 0, 0);
 }
