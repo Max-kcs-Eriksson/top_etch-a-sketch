@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF -8">
-        <title>Drawing-Pad</title>
+        <title>Drawing Pad</title>
         <link rel="stylesheet" href="./style.css">
         <script src="./javascript.js" defer></script>
     </head>
@@ -12,18 +12,27 @@
         </header>
         <main>
             <div class="top-bar">
-                <h1>Drawing-Pad</h1>
+                <h1>Drawing Pad</h1>
             </div>
             <div class="cont">
                 <div class="ctrl-panel">
-                    <button id="erase-drawing" class="btn">Erase</button>
+                    <button id="erase-drawing" class="btn">ERASE</button>
+                    <div class="draw-style-cont">
+                        <button id="color" class="btn">COLOR</button>
+                        <button id="black" class="btn">BLACK</button>
+                        <button id="shader" class="btn">SHADER</button>
+                        <button id="rainbow" class="btn">RAINBOW</button>
+                    </div>
                     <div class="slider-cont">
-                        <p>X- & Y-axis: <span id="display-x-y"></span></p>
-                        <input type="range" min="2" max="64" value="31" id="set-x-y" class="slider">
-                        <button id="confirm-x-y" class="btn">Set X & Y</button>
+                        <div class="display-cont">
+                            <p>X- & Y-axis: </p>
+                            <p id="display-x-y">20x20</p>
+                        </div>
+                        <input type="range" min="2" max="64" value="20" id="set-x-y" class="slider">
+                        <button id="confirm-x-y" class="btn">SET X&Y</button>
                     </div>
                 </div>
-                <div class="drawing-pad" style="width: 800px; height: 800px;">
+                <div class="drawing-pad" style="width: 700px; height: 700px;">
                     <!-- DOM manipulation adds grid of divs -->
                 </div>
             </div>

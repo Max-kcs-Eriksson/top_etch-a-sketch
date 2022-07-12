@@ -1,8 +1,9 @@
 /* For testing only */
-/* * { border: 1px solid rebeccapurple; } */
+* { border: 1px solid rebeccapurple; }
 
 /* GENERAL */
 * {
+    cursor: default;
     /* TODO
     Change color scheme */
     background-color: rgb(10, 15, 25);
@@ -29,6 +30,11 @@ main {
     gap: 1em;
 }
 
+.cont {
+    display: flex;
+
+}
+
 /* TOP BAR */
 .top-bar {
     display: flex;
@@ -38,7 +44,19 @@ main {
     padding: 0em 1em;
 }
 
-.top-bar .btn {
+/* CTRL PANEL */
+
+.ctrl-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: .5em;
+    padding: .5em;
+    gap: 1em;
+}
+
+.ctrl-panel .btn {
     background-color: rgb(215, 235, 255);
     color: rgb(10, 15, 25);
     width: 75px;
@@ -47,13 +65,68 @@ main {
     border-radius: 50%;
 }
 
+/* Draw Style Cont */
+
+.draw-style-cont {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.draw-style-cont .btn {
+    width: 8em;
+    height: auto;
+    border-radius: 4px 8px 8px;
+}
+
+/* Slider Cont */
+
+.slider-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5em;
+}
+
+.display-cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: rgb(215, 235, 255);
+    height: 10px;
+    border-radius: 20px;
+}
+
+.slider::-webkit-slider-thumb {
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: rgb(255, 125, 0);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+    cursor: pointer;
+    background-color: rgb(255, 125, 0);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
 /* DRAWING PAD */
 .drawing-pad {
     display: flex;
+    flex: 0 0 auto;
     flex-wrap: wrap;
     background-color: rgb(215, 235, 255);
-    /* width: 800px;
-    height: 800px; */
 }
 
 
