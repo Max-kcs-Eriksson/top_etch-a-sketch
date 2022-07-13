@@ -19,6 +19,13 @@ html {
     color: rgb(215, 235, 255);
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .btn {
     cursor: pointer;
     font-family: 'zector';
