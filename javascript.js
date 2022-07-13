@@ -216,9 +216,13 @@ function paintBox() {
         // alphaValue += .1;
         this.style.background = `rgba(0, 0, 0, ${alphaValue})`;
         // console.log('Current alphaValue: ' + alphaValue / 10);
-    } /* else if (drawStyle === 'rainbow') {
-        
-    } */
+    } else if (drawStyle === 'rainbow') {
+        let r = getRandomInt(0, 255);
+        let g = getRandomInt(0, 255);
+        let b = getRandomInt(0, 255);
+        alphaValue = 1;
+        this.style.background = `rgba(${r}, ${g}, ${b}, ${alphaValue})`;
+    }
 };
 
 /* Returns a random integer between min (inclusive) and max (inclusive) */
