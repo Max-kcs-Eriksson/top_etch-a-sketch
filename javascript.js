@@ -203,6 +203,8 @@ function paintBox() {
         let tempAlpha = tempString.slice(-2, -1);
         alphaValue = parseFloat(++tempAlpha / 10);
 
+        console.log('rgba: ' + rgba);
+
         console.log(rgbaValues);
         console.log('alphaValue' + rgbaValues[3]);
         console.log('Temp String: ' + tempString);
@@ -218,3 +220,10 @@ function paintBox() {
         
     } */
 };
+
+/* Returns a random integer between min (inclusive) and max (inclusive) */
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
