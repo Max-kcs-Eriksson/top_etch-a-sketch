@@ -4,6 +4,27 @@ const drawPadWidthNum = drawPadWidthPX.slice(0, -2); // Slice last two chars ('p
 console.log('drawPadWidthPX: ' + drawPadWidthPX);
 console.log('drawPadWidthNum: ' + drawPadWidthNum);
 
+let drawStyleButtons = document.querySelectorAll('.draw-style-btn');
+let drawStyle;
+let alphaValue = 0;
+
+function setDrawStyle() {
+    drawStyle  = this.id;
+    console.log('Active drawStyle: ' + drawStyle);
+};
+/* User selects draw style */
+    // Event listener forEach 'draw-style-btn' that change 'drawStyle' variable
+    drawStyleButtons.forEach((button => {
+        button.addEventListener('click', setDrawStyle);
+    }));
+        // Color
+            // drawStyle = '';
+        // Black
+            // drawStyle = 'black';
+        // Shading
+            // drawStyle = 'shading';
+        // Rainbow
+            // drawStyle = 'rainbow';
 
 
 /* User selects X-& Y-axis */
@@ -13,7 +34,7 @@ const axisSliderValue = document.querySelector('#display-x-y');
 // Displays value on range input
 setAxisSlider.oninput = () => {
     axisSliderValue.textContent = `${setAxisSlider.value}x${setAxisSlider.value}`;
-}
+};
 /* Confirms axisSliderValue and created grid of drawBox with set X-& Y-axis */
 const setAxisButton = document.querySelector('#confirm-x-y');
 setAxisButton.addEventListener('click', () => {
@@ -37,6 +58,7 @@ setAxisButton.addEventListener('click', () => {
         for (let i = 0; i < drawBoxTotal; i++) {
             const drawBox = document.createElement('div');
             drawBox.classList.add('draw-box');
+            drawBox.style.background = `rgba(215, 235, 255, ${alphaValue})`;
             drawPad.appendChild(drawBox);
         };
 
@@ -48,47 +70,47 @@ setAxisButton.addEventListener('click', () => {
 
         const drawBoxes = document.querySelectorAll('.draw-box');
 
-        function addMouseMove() {
+        function addMouseEnter() {
             drawBoxes.forEach((div => {
                 /* Set style property: width & height */
                 div.style.width = `${drawBoxWidth}px`;
                 div.style.height = `${drawBoxWidth}px`;
                 /* Add mouseenter event listener for each box */
-                div.addEventListener('mousemove', paintBox);
+                div.addEventListener('mouseenter', paintBox);
             }));
-        }
+        };
         
-        function removeMouseMove() {
+        function removeMouseEnter() {
             drawBoxes.forEach((div => {
                 /* Set style property: width & height */
                 div.style.width = `${drawBoxWidth}px`;
                 div.style.height = `${drawBoxWidth}px`;
                 /* Add mouseenter event listener for each box */
-                div.removeEventListener('mousemove', paintBox);
+                div.removeEventListener('mouseenter', paintBox);
             }));
-        }
+        };
         // drawBoxes.forEach((div => {
         //     /* Set style property: width & height */
         //     div.style.width = `${drawBoxWidth}px`;
         //     div.style.height = `${drawBoxWidth}px`;
         //     /* Add mouseenter event listener for each box */
-        //     div.addEventListener('mousemove', paintBox);
+        //     div.addEventListener('mouseenter', paintBox);
         // }));
         drawBoxes.forEach((div => {
             /* Set style property: width & height */
             div.style.width = `${drawBoxWidth}px`;
             div.style.height = `${drawBoxWidth}px`;
             /* Add mouseenter event listener for each box */
-            div.addEventListener('mousedown', addMouseMove);
+            div.addEventListener('mousedown', addMouseEnter);
             div.addEventListener('mousedown', paintBox);
-            div.addEventListener('mouseup', removeMouseMove);
+            div.addEventListener('mouseup', removeMouseEnter);
         }));
     // If oldDrawBox do exist, run below code:
     } else {
         // Remove last child of drawPad for oldDrawBoxes.length number of times
         for (let i = 0; i < oldDrawBoxes.length; i++) {
             drawPad.removeChild(drawPad.lastChild);
-        }
+        };
 
         /* SAME CODE AS if (!oldDrawBox) */
         const xAxis = setAxisSlider.value;
@@ -101,6 +123,7 @@ setAxisButton.addEventListener('click', () => {
         for (let i = 0; i < drawBoxTotal; i++) {
             const drawBox = document.createElement('div');
             drawBox.classList.add('draw-box');
+            drawBox.style.background = `rgba(215, 235, 255, ${alphaValue})`;
             drawPad.appendChild(drawBox);
         };
 
@@ -112,43 +135,43 @@ setAxisButton.addEventListener('click', () => {
 
         const drawBoxes = document.querySelectorAll('.draw-box');
 
-        function addMouseMove() {
+        function addMouseEnter() {
             drawBoxes.forEach((div => {
                 /* Set style property: width & height */
                 div.style.width = `${drawBoxWidth}px`;
                 div.style.height = `${drawBoxWidth}px`;
                 /* Add mouseenter event listener for each box */
-                div.addEventListener('mousemove', paintBox);
+                div.addEventListener('mouseenter', paintBox);
             }));
-        }
+        };
         
-        function removeMouseMove() {
+        function removeMouseEnter() {
             drawBoxes.forEach((div => {
                 /* Set style property: width & height */
                 div.style.width = `${drawBoxWidth}px`;
                 div.style.height = `${drawBoxWidth}px`;
                 /* Add mouseenter event listener for each box */
-                div.removeEventListener('mousemove', paintBox);
+                div.removeEventListener('mouseenter', paintBox);
             }));
-        }
+        };
         // drawBoxes.forEach((div => {
         //     /* Set style property: width & height */
         //     div.style.width = `${drawBoxWidth}px`;
         //     div.style.height = `${drawBoxWidth}px`;
         //     /* Add mouseenter event listener for each box */
-        //     div.addEventListener('mousemove', paintBox);
+        //     div.addEventListener('mouseenter', paintBox);
         // }));
         drawBoxes.forEach((div => {
             /* Set style property: width & height */
             div.style.width = `${drawBoxWidth}px`;
             div.style.height = `${drawBoxWidth}px`;
             /* Add mouseenter event listener for each box */
-            div.addEventListener('mousedown', addMouseMove);
+            div.addEventListener('mousedown', addMouseEnter);
             div.addEventListener('mousedown', paintBox);
-            div.addEventListener('mouseup', removeMouseMove);
+            div.addEventListener('mouseup', removeMouseEnter);
         }));
 
-    }
+    };
 
 
 
@@ -165,5 +188,33 @@ setAxisButton.addEventListener('click', () => {
 
 
 function paintBox() {
-    this.classList.add('painted');
+    // this.classList.add('painted');
+    if (drawStyle === 'black') {
+        alphaValue = 1;
+        this.style.background = `rgba(0, 0, 0, ${alphaValue})`;
+        console.log('Current alphaValue: ' + alphaValue);
+    } else if (drawStyle === 'shading') {
+        alphaValue = 0;
+        let rgba = this.style.getPropertyValue('background');
+        let rgbaValues = rgba.split(",");
+        // Index number 3 returns a number followed by and end parentheses
+        let tempString = rgbaValues[3];
+        // Removes the end parentheses and returns the alpha value only
+        let tempAlpha = tempString.slice(-2, -1);
+        alphaValue = parseFloat(++tempAlpha / 10);
+
+        console.log(rgbaValues);
+        console.log('alphaValue' + rgbaValues[3]);
+        console.log('Temp String: ' + tempString);
+        console.log(typeof tempString);
+        console.log('tempAlpha: ' + alphaValue);
+        console.log(typeof tempAlpha);
+        console.log('Final alphaValue: ' + alphaValue);
+        console.log(typeof alphaValue);
+        // alphaValue += .1;
+        this.style.background = `rgba(0, 0, 0, ${alphaValue})`;
+        // console.log('Current alphaValue: ' + alphaValue / 10);
+    } /* else if (drawStyle === 'rainbow') {
+        
+    } */
 };
