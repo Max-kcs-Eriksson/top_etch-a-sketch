@@ -6,7 +6,7 @@ console.log('drawPadWidthNum: ' + drawPadWidthNum);
 
 let drawStyleButtons = document.querySelectorAll('.draw-style-btn');
 let drawStyle;
-let alphaValue = 0;
+let alphaValue = 1;
 
 function setDrawStyle() {
     drawStyle  = this.id;
@@ -191,31 +191,51 @@ function paintBox() {
     // this.classList.add('painted');
     if (drawStyle === 'black') {
         alphaValue = 1;
-        this.style.background = `rgba(0, 0, 0, ${alphaValue})`;
-        console.log('Current alphaValue: ' + alphaValue);
+        this.style.background = `rgba(0, 0, 0 , ${alphaValue})`;
+        // console.log('Current alphaValue: ' + alphaValue);
     } else if (drawStyle === 'shading') {
-        alphaValue = 0;
+        alphaValue = 1;
         let rgba = this.style.getPropertyValue('background');
-        let rgbaValues = rgba.split(",");
-        // Index number 3 returns a number followed by and end parentheses
-        let tempString = rgbaValues[3];
-        // Removes the end parentheses and returns the alpha value only
-        let tempAlpha = tempString.slice(-2, -1);
-        alphaValue = parseFloat(++tempAlpha / 10);
-
         console.log('rgba: ' + rgba);
+        console.log('type of rgba: ' + typeof rgba);
 
-        console.log(rgbaValues);
-        console.log('alphaValue' + rgbaValues[3]);
-        console.log('Temp String: ' + tempString);
-        console.log(typeof tempString);
-        console.log('tempAlpha: ' + alphaValue);
-        console.log(typeof tempAlpha);
-        console.log('Final alphaValue: ' + alphaValue);
-        console.log(typeof alphaValue);
-        // alphaValue += .1;
-        this.style.background = `rgba(0, 0, 0, ${alphaValue})`;
-        // console.log('Current alphaValue: ' + alphaValue / 10);
+        let rgbaTemp1 = rgba.slice(4);
+        console.log(rgbaTemp1);
+        let rgbaTemp2 = rgbaTemp1.slice(0, -1);
+        console.log(rgbaTemp2);
+
+        let rgbaValues = rgbaTemp2.split(",");
+        console.log('rgbaValues: ' + rgbaValues);
+        console.log('type of rgbaValues: ' + typeof rgbaValues);
+        
+
+
+        let r = rgbaValues[0];
+        console.log('R: ' + r);
+        r = parseFloat(r);
+        console.log('R: ' + r);
+        r *= .9;
+        console.log('Array Index (R): ' + rgbaValues[0]);
+        console.log('R: ' + r);
+
+        let g = rgbaValues[1];
+        console.log('G: ' + g);
+        g = parseFloat(g);
+        console.log('G: ' + g);
+        g *= .9;
+        console.log('Array Index (G): ' + rgbaValues[1]);
+        console.log('G: ' + g);
+
+        let b = rgbaValues[2];
+        console.log('B: ' + b);
+        b = parseFloat(b);
+        console.log('B: ' + b);
+        b *= .9;
+        console.log('Array Index (B): ' + rgbaValues[2]);
+        console.log('B: ' + b);
+        
+        
+        this.style.background = `rgba(${r}, ${g}, ${b}, ${alphaValue})`;
     } else if (drawStyle === 'rainbow') {
         let r = getRandomInt(0, 255);
         let g = getRandomInt(0, 255);
