@@ -1,5 +1,5 @@
 /* For testing only */
-* { border: 1px solid rebeccapurple; }
+/* * { border: 1px solid rebeccapurple; } */
 
 /*****************************************
 ***************** GENERAL ****************
@@ -157,12 +157,15 @@ h1 {
 .color-cont__display-cont p {
     font-family: 'dat-cub--regular';
     font-size: 1rem;
+    text-shadow: 0 0 3px rgba(0, 0, 0, .5);
 }
 
 #display-color {
     background: hsl(270, 100%, 50%);
     width: 1em;
     height: 1em;
+    border-radius: 50%;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, .5);
 }
 
 #set-color {
@@ -195,6 +198,7 @@ h1 {
 .slider-cont__display-cont p {
     font-family: 'dat-cub--regular';
     font-size: 1rem;
+    text-shadow: 0 0 3px rgba(0, 0, 0, .5);
 }
 
 .slider {
