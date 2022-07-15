@@ -7,11 +7,65 @@ console.log('drawPadWidthNum: ' + drawPadWidthNum);
 let drawStyleButtons = document.querySelectorAll('.draw-style-btn');
 let drawStyle;
 
+
+let r,
+    g,
+    b,
+    alphaValue;
+
+// /* Erase button */
+// const eraseButton = document.querySelector('#erase-drawing');
+// eraseButton.addEventListener('click', () => {
+//     // Get current 'r', 'g', and 'b' of this drawBox
+
+//     console.log('Initiate erase');
+
+//     // TODO
+//     // Decrement alphaValue for each div of drawBoxes until transparent using for loop
+//         for (let i = 0; i < 10; i++) {
+//             drawBoxes.forEach((div => {
+//                 // let target = this;
+//                 // for (let i = 0; i > 10; i++) {
+//                     fadeColor(div);
+//                 // };
+//             }));
+//         };
+
+//         // drawBoxes.forEach((div => {
+//             // TODO
+//             // WORKS?s
+//             // getRgbNumValues(this);
+//             // Decrement alphaValue
+//                 // Make function fadeColor()
+
+//             // let rgba = this.style.getPropertyValue('background');
+
+//             // // Slice out only the number values separated by comma points
+//             // let rgbaTemp1 = rgba.slice(4);
+//             // let rgbaTemp2 = rgbaTemp1.slice(0, -1);
+    
+//             // let rgbaValues = rgbaTemp2.split(",");
+    
+//             // let r = rgbaValues[0];
+//             // r = parseFloat(r);
+    
+//             // let g = rgbaValues[1];
+//             // g = parseFloat(g);
+    
+//             // let b = rgbaValues[2];
+//             // b = parseFloat(b);
+
+//             // div.style.background = `rgba(${r}, ${g}, ${b}, ${alphaValue})`;
+//         // }));
+//         console.log('Erase completed');
+// });
+
+
 /* User selects value of "h" */
 const setColorSlider = document.querySelector('#set-color');
 const colorSliderValue = document.querySelector('#display-color');
 
-let alphaValue = 1;
+alphaValue = 1;
 
 // Displays hsl color on range input
 setColorSlider.oninput = () => {
@@ -70,7 +124,7 @@ setAxisButton.addEventListener('click', () => {
         for (let i = 0; i < drawBoxTotal; i++) {
             const drawBox = document.createElement('div');
             drawBox.classList.add('draw-box');
-            drawBox.style.background = `rgba(215, 235, 255, ${alphaValue})`;
+            drawBox.style.background = `rgba(215, 235, 255, .99)`;
             drawPad.appendChild(drawBox);
         };
 
@@ -117,6 +171,47 @@ setAxisButton.addEventListener('click', () => {
             div.addEventListener('mousedown', paintBox);
             div.addEventListener('mouseup', removeMouseEnter);
         }));
+
+        /* Erase button */
+        const eraseButton = document.querySelector('#erase-drawing');
+        eraseButton.addEventListener('click', () => {
+            // Decrement alphaValue for each div of drawBoxes until transparent using for loop
+            for (let i = 0; i < 10; i++) {
+                drawBoxes.forEach((div => {
+                    let rgba = div.style.getPropertyValue('background');
+
+                    // Slice out only the number values separated by comma points
+                    let rgbaTemp1 = rgba.slice(5);
+                    let rgbaTemp2 = rgbaTemp1.slice(0, -1);
+
+                    let rgbaValues = rgbaTemp2.split(",");
+
+                    let rValue = rgbaValues[0];
+                    rValue = parseFloat(rValue);
+
+                    let gValue = rgbaValues[1];
+                    gValue = parseFloat(gValue);
+
+                    let bValue = rgbaValues[2];
+                    bValue = parseFloat(bValue);
+
+                    alphaValue = rgbaValues[3];
+                    alphaValue = parseFloat(alphaValue);
+
+                    alphaValue -= .1;
+
+                    div.style.background = `rgba(${rValue}, ${gValue}, ${bValue}, ${alphaValue})`;
+                }));
+            };
+
+            drawBoxes.forEach((div => {
+                div.style.background = `rgba(215, 235, 255, .99)`;
+            }));
+            
+            console.log('Erase completed');
+        });
+
+
     // If oldDrawBox do exist, run below code:
     } else {
         // Remove last child of drawPad for oldDrawBoxes.length number of times
@@ -135,7 +230,7 @@ setAxisButton.addEventListener('click', () => {
         for (let i = 0; i < drawBoxTotal; i++) {
             const drawBox = document.createElement('div');
             drawBox.classList.add('draw-box');
-            drawBox.style.background = `rgba(215, 235, 255, ${alphaValue})`;
+            drawBox.style.background = `rgba(215, 235, 255, .99)`;
             drawPad.appendChild(drawBox);
         };
 
@@ -182,6 +277,46 @@ setAxisButton.addEventListener('click', () => {
             div.addEventListener('mousedown', paintBox);
             div.addEventListener('mouseup', removeMouseEnter);
         }));
+
+
+        /* Erase button */
+        const eraseButton = document.querySelector('#erase-drawing');
+        eraseButton.addEventListener('click', () => {
+            // Decrement alphaValue for each div of drawBoxes until transparent using for loop
+            for (let i = 0; i < 10; i++) {
+                drawBoxes.forEach((div => {
+                    let rgba = div.style.getPropertyValue('background');
+
+                    // Slice out only the number values separated by comma points
+                    let rgbaTemp1 = rgba.slice(5);
+                    let rgbaTemp2 = rgbaTemp1.slice(0, -1);
+
+                    let rgbaValues = rgbaTemp2.split(",");
+
+                    let rValue = rgbaValues[0];
+                    rValue = parseFloat(rValue);
+
+                    let gValue = rgbaValues[1];
+                    gValue = parseFloat(gValue);
+
+                    let bValue = rgbaValues[2];
+                    bValue = parseFloat(bValue);
+
+                    alphaValue = rgbaValues[3];
+                    alphaValue = parseFloat(alphaValue);
+
+                    alphaValue -= .1;
+
+                    div.style.background = `rgba(${rValue}, ${gValue}, ${bValue}, ${alphaValue})`;
+                }));
+            };
+
+            drawBoxes.forEach((div => {
+                div.style.background = `rgba(215, 235, 255, .99)`;
+            }));
+            
+            console.log('Erase completed');
+        });
 
     };
 
@@ -202,16 +337,19 @@ setAxisButton.addEventListener('click', () => {
 function paintBox() {
     // this.classList.add('painted');
     if (drawStyle === 'black') {
-        alphaValue = 1;
+        alphaValue = .99;
         this.style.background = `rgba(0, 0, 0 , ${alphaValue})`;
         // console.log('Current alphaValue: ' + alphaValue);
     } else if (drawStyle === 'shading') {
-        alphaValue = 1;
+        alphaValue = .99;
+
         let rgba = this.style.getPropertyValue('background');
         console.log('rgba: ' + rgba);
         console.log('type of rgba: ' + typeof rgba);
 
-        let rgbaTemp1 = rgba.slice(4);
+        
+
+        let rgbaTemp1 = rgba.slice(5);
         console.log(rgbaTemp1);
         let rgbaTemp2 = rgbaTemp1.slice(0, -1);
         console.log(rgbaTemp2);
@@ -246,14 +384,16 @@ function paintBox() {
         console.log('Array Index (B): ' + rgbaValues[2]);
         console.log('B: ' + b);
         
-        
+        console.log(alphaValue);
         this.style.background = `rgba(${r}, ${g}, ${b}, ${alphaValue})`;
     } else if (drawStyle === 'rainbow') {
-        alphaValue = 1;
+        alphaValue = .99;
 
         hValue = getRandomInt(0, 359);
         this.style.background = `hsla(${hValue}, 100%, 50%, ${alphaValue})`;
     } else if (drawStyle === 'color') {
+        alphaValue = .99;
+
         hValue = setColorSlider.value;
         this.style.background = `hsla(${hValue}, 100%, 50%, ${alphaValue})`;
     }
@@ -264,4 +404,98 @@ function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+function fadeColor(target) {
+    // let rgba = target.style.getPropertyValue('background');
+
+    // // Slice out only the number values separated by comma points
+    // let rgbTemp1 = rgba.slice(4);
+    // let rgbTemp2 = rgbTemp1.slice(0, -1);
+
+    // let rgbValues = rgbTemp2.split(",");
+
+    // if (rgbValues.length === 3) {
+    //     // // Slice out only the number values separated by comma points
+    //     // let rgbTemp1 = rgba.slice(4);
+    //     // let rgbTemp2 = rgbTemp1.slice(0, -1);
+
+    //     // let rgbValues = rgbTemp2.split(",");
+
+    //     let r = rgbValues[0];
+    //     r = parseFloat(r);
+
+    //     let g = rgbValues[1];
+    //     g = parseFloat(g);
+
+    //     let b = rgbValues[2];
+    //     b = parseFloat(b);
+
+    //     alphaValue = 1;
+
+    // } else if (rgbValues.length === 4) {
+    //     // let rgbTemp1 = rgba.slice(4);
+    //     // let rgbTemp2 = rgbTemp1.slice(0, -1);
+
+    //     // let rgbValues = rgbTemp2.split(",");
+
+    //     let r = rgbValues[0];
+    //     r = parseFloat(r);
+
+    //     let g = rgbValues[1];
+    //     g = parseFloat(g);
+
+    //     let b = rgbValues[2];
+    //     b = parseFloat(b);
+
+    //     alphaValue = rgbValues[3];
+    // }
+
+    // // Fade 10%
+    // alphaValue -= .5
+    target.style.background = `rgba(${r}, ${g}, ${b}, ${alphaValue})`;
+}
+
+function getRgbNumValues (target) {
+    
+    let rgba = target.style.getPropertyValue('background');
+
+    // Slice out only the number values separated by comma points
+    let rgbTemp1 = rgba.slice(4);
+    let rgbTemp2 = rgbTemp1.slice(0, -1);
+
+    let rgbValues = rgbTemp2.split(",");
+
+    let r = rgbValues[0];
+    r = parseFloat(r);
+
+    let g = rgbValues[1];
+    g = parseFloat(g);
+
+    let b = rgbValues[2];
+    b = parseFloat(b);
+}
+
+function getRgbaNumValues (target) {
+    
+    let rgba = target.style.getPropertyValue('background');
+
+    // Slice out only the number values separated by comma points
+    let rgbaTemp1 = rgba.slice(5);
+    let rgbaTemp2 = rgbaTemp1.slice(0, -1);
+
+    let rgbaValues = rgbaTemp2.split(",");
+
+    let r = rgbaValues[0];
+    r = parseFloat(r);
+
+    let g = rgbaValues[1];
+    g = parseFloat(g);
+
+    let b = rgbaValues[2];
+    b = parseFloat(b);
+
+    let a = rgbaValues[3];
+    a = parseFloat(a);
 }
