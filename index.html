@@ -18,13 +18,21 @@
                 <div class="ctrl-panel">
                     <button id="erase-drawing" class="btn">ERASE</button>
                     <div class="draw-style-cont">
-                        <button id="color" class="btn draw-style-btn">COLOR</button>
+                        <div class="color-cont">
+                            <div class="color-cont__display-cont">
+                                <p>Color:</p>
+                                <!-- Make text content same as "value" attribute on below range input -->
+                                <div id="display-color"></div>
+                            </div>
+                            <input type="range" min="0" max="359" value="270" id="set-color" class="slider">
+                            <button id="color" class="btn draw-style-btn">COLOR</button>
+                        </div>
                         <button id="black" class="btn draw-style-btn">BLACK</button>
                         <button id="shading" class="btn draw-style-btn">SHADING</button>
                         <button id="rainbow" class="btn draw-style-btn">RAINBOW</button>
                     </div>
                     <div class="slider-cont">
-                        <div class="display-cont">
+                        <div class="slider-cont__display-cont">
                             <p>X & Y: </p>
                             <!-- Make text content same as "value" attribute on below range input -->
                             <p id="display-x-y">20x20</p>
