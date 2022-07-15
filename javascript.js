@@ -254,6 +254,9 @@ function paintBox() {
         let b = getRandomInt(0, 255);
         alphaValue = 1;
         this.style.background = `rgba(${r}, ${g}, ${b}, ${alphaValue})`;
+    } else if (drawStyle === 'color') {
+        hValue = setColorSlider.value;
+        this.style.background = `hsla(${hValue}, 100%, 50%, ${alphaValue})`;
     }
 };
 
