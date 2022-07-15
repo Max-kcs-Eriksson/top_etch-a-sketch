@@ -249,11 +249,10 @@ function paintBox() {
         
         this.style.background = `rgba(${r}, ${g}, ${b}, ${alphaValue})`;
     } else if (drawStyle === 'rainbow') {
-        let r = getRandomInt(0, 255);
-        let g = getRandomInt(0, 255);
-        let b = getRandomInt(0, 255);
         alphaValue = 1;
-        this.style.background = `rgba(${r}, ${g}, ${b}, ${alphaValue})`;
+
+        hValue = getRandomInt(0, 359);
+        this.style.background = `hsla(${hValue}, 100%, 50%, ${alphaValue})`;
     } else if (drawStyle === 'color') {
         hValue = setColorSlider.value;
         this.style.background = `hsla(${hValue}, 100%, 50%, ${alphaValue})`;
