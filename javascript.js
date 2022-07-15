@@ -6,7 +6,19 @@ console.log('drawPadWidthNum: ' + drawPadWidthNum);
 
 let drawStyleButtons = document.querySelectorAll('.draw-style-btn');
 let drawStyle;
+
+/* User selects value of "h" */
+const setColorSlider = document.querySelector('#set-color');
+const colorSliderValue = document.querySelector('#display-color');
+
 let alphaValue = 1;
+
+// Displays hsl color on range input
+setColorSlider.oninput = () => {
+    let hValue = setColorSlider.value;
+    colorSliderValue.style.background = `hsla(${hValue}, 100%, 50%, 1)`;
+};
+
 
 function setDrawStyle() {
     drawStyle  = this.id;
